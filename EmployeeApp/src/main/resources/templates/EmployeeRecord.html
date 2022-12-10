@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    </head>
+
+    <body>
+      <div class="container">
+             <div class="card">
+                <!--card header start-->
+                <div class="card-header bg-info text-white">
+                     <h1>Employee recored</h1>
+                </div>
+                <!--card body  start-->
+                <div class="card-body  text-white">
+                        <table class="table table-hover text-center">
+                          <tr class="bg-info text-white"> 
+                             <th>Emp No</th>
+                             <th>Emp Name</th>
+                             <th>Emp salary</th>
+                            <th>Emp Dept</th>
+                             <th>Emp Addrs</th>
+                             <th>Operation</th>
+                          </tr>
+                         <tr  th:each="emp:${list}" class="text-white bg-dark">
+                                    <td th:text=${emp.id}></td>
+                                    <td th:text=${emp.empName}></td>
+                                    <td th:text=${emp.empSal}></td>
+                                    <td th:text=${emp.empDept}></td>
+                                    <td th:text=${emp.empAddr}></td>
+                                    <td><a th:href="@{/employee/delete(id=${emp.id})}" class="btn btn-danger">Delete</a> |<a th:href="@{/employee/edit(id=${emp.id})}" class="btn btn-warning">Edit</a></td>
+                           
+                          </tr>  
+                          
+                          
+                        
+                        </table>
+                </div>
+                <!--card footer start-->
+                <div class="card-footer bg-primary text-white">
+                    <h2 th:text="${msg}"></h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </body>
+</html>
